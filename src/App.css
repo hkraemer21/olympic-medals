@@ -1,0 +1,36 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+button {
+    margin: 0 3px;
+    border-radius: 8px;
+    border: 1px solid #1a1a1a;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.card {
+    margin: 0 3px;
+    border-radius: 8px;
+    border: 1px solid #1a1a1a;
+    background-color: #f9f9f9;
+}
+
+.countries {
+    padding: .5rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+hr {
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
