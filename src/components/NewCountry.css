@@ -1,0 +1,75 @@
+#trigger {
+  position: fixed;
+  left: 0.8rem;
+  bottom: 0.8rem;
+  cursor: pointer;
+  z-index: 80;
+  transform: scale(80%, 80%);
+  transition: transform 150ms ease-in-out;
+}
+
+#trigger:hover {
+  transform: rotate(90deg) scale(100%, 100%);
+}
+
+#dialog,
+#dialog * {
+  box-sizing: border-box;
+  border-radius: 0.3em;
+}
+
+#dialog {
+  border: 0.1rem solid #1a1a1a;
+  background-color: #f0f0f0;
+  padding: 0.8rem;
+  width: 278px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(6, auto);
+  grid-template-areas:
+    "_header"
+    "_text"
+    "_save"
+    "_cancel";
+}
+
+#dialog > header {
+  grid-area: _header;
+  text-align: center;
+}
+
+#dialog > div:has(> #text) {
+  grid-area: _text;
+}
+#dialog > div:has(> #save) {
+  grid-area: _save;
+}
+#dialog > div:has(> #cancel) {
+  grid-area: _cancel;
+}
+
+#dialog > div > #text {
+    width: 100%;
+}
+
+#dialog > div > #save,
+#dialog > div > #cancel {
+  width: 50%;
+}
+
+#overlay {
+  background-color: gray;
+  opacity: 0.3;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 90;
+}

@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import Country from './components/Country'
+import NewCountry from './components/NewCountry'
 import './App.css'
 
 function App() {
@@ -22,19 +23,19 @@ function App() {
 
   function incrementMedal(countryId, medalType) {
     setCountry((currentCountry) =>
-      currentCountry.map((c) =>
-        c.id === countryId ? { ...c, [medalType]: c[medalType] + 1 } : c
+      currentCountry.map((country) =>
+        country.id === countryId ? { ...country, [medalType]: country[medalType] + 1 } : country
       )
     );
   }
 
   function decrementMedal(countryId, medalType) {
     setCountry((currentCountry) =>
-      currentCountry.map((c) => {
-        if (c.id !== countryId) return c;
+      currentCountry.map((country) => {
+        if (country.id !== countryId) return country;
 
-        const currentValue = c[medalType];
-        return currentValue > 0 ? { ...c, [medalType]: currentValue - 1 } : c;
+        const currentValue = country[medalType];
+        return currentValue > 0 ? { ...country, [medalType]: currentValue - 1 } : country;
       })
     );
   }
@@ -46,6 +47,12 @@ function App() {
 
   }
 
+  function handleAdd(countryName, gold, silver, bronze) {
+    const id = country.length > 0 ? Math.max(...country.map((country) => country.id)) + 1 : 1;
+    const newCountry = { id, name: countryName, gold: gold, silver: silver, bronze: bronze };
+    setCountry((currentCountry) => [...currentCountry, newCountry]);
+  }
+
   return (
     <div>
       <h1>Olympic Medals: {totalMedals}</h1>
@@ -55,6 +62,7 @@ function App() {
           <Country key={country.id} country={country} medals={medals.current} onIncrement={incrementMedal} 
             onDecrement={decrementMedal} onDelete={handleDelete} />
         ))}
+        <NewCountry onAdd={handleAdd} />
       </div>
     </div>
   )
